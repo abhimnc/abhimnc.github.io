@@ -1,0 +1,2 @@
+# mypage.io
+for website
