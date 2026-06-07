@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pro Mentors – Find Your Guide, Achieve Your Goals</title>
+  <meta name="description" content="Pro Mentors connects you with expert mentors across career, education, and life goals — IIT, NEET, UPSC, MBA, Software Engineering, Legal, Healthcare, and more." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange: #B5748A;
+      --orange-light: #C98CA4;
+      --teal: #7B6FA0;
+      --teal-light: #9B8FC0;
+      --yellow: #F4C5D3;
+      --cream: #FDF5F8;
+      --dark: #2C1A2E;
+      --gray: #7A6070;
+      --light-gray: #F5EEF2;
+      --white: #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #EFE0E8;
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .logo {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: 1.4rem;
+      color: var(--dark);
+      text-decoration: none;
+    }
+    .logo span { color: var(--orange); }
+
+    nav .cta-btn {
+      background: var(--orange);
+      color: white;
+      border: none;
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.1s;
+    }
+    nav .cta-btn:hover { background: var(--orange-light); transform: translateY(-1px); }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #FDF0F5 0%, #EFE8F8 100%);
+      padding: 80px 5% 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 360px; height: 360px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(181,116,138,0.15), transparent 70%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; left: -60px;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(123,111,160,0.12), transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: #F5DDE7;
+      color: var(--orange);
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 50px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-family: 'Nunito', sans-serif;
+      font-size: clamp(2.4rem, 6vw, 3.8rem);
+      font-weight: 900;
+      line-height: 1.15;
+      color: var(--dark);
+      max-width: 780px;
+      margin: 0 auto 20px;
+    }
+    .hero h1 .highlight { color: var(--orange); }
+    .hero h1 .highlight-teal { color: var(--teal); }
+
+    .hero p {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: var(--gray);
+      max-width: 580px;
+      margin: 0 auto 40px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--orange);
+      color: white;
+      padding: 15px 34px;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 0 4px 20px rgba(181,116,138,0.35);
+    }
+    .btn-primary:hover { background: var(--orange-light); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(181,116,138,0.4); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: white;
+      color: var(--dark);
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 2px solid #E5E7EB;
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--orange); color: var(--orange); transform: translateY(-2px); }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: clamp(24px, 5vw, 64px);
+      margin-top: 56px;
+      flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-number {
+      font-family: 'Nunito', sans-serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--dark);
+    }
+    .stat-label { font-size: 0.85rem; color: var(--gray); margin-top: 2px; }
+
+    /* SECTION COMMON */
+    section { padding: 80px 5%; }
+    .section-label {
+      display: inline-block;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Nunito', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 900;
+      color: var(--dark);
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--gray);
+      max-width: 560px;
+    }
+    .section-header { margin-bottom: 48px; }
+
+    /* CATEGORIES */
+    .categories-section { background: var(--cream); }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .category-card {
+      background: white;
+      border-radius: 18px;
+      padding: 24px 20px;
+      text-align: center;
+      border: 1.5px solid #F3E8DF;
+      transition: all 0.22s;
+      cursor: default;
+    }
+    .category-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+      border-color: var(--orange);
+    }
+    .category-icon {
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .category-name {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+    .category-desc {
+      font-size: 0.78rem;
+      color: var(--gray);
+      line-height: 1.4;
+    }
+
+    /* HOW IT WORKS */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 32px;
+    }
+
+    .step {
+      position: relative;
+      padding: 32px 28px;
+      background: var(--cream);
+      border-radius: 20px;
+    }
+    .step-number {
+      font-family: 'Nunito', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: #E8C5D4;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .step h3 {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+    .step p { font-size: 0.9rem; color: var(--gray); }
+
+    /* FEATURES */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+    }
+    .feature-card {
+      background: white;
+      border: 1.5px solid #F3E8DF;
+      border-radius: 20px;
+      padding: 28px;
+      transition: box-shadow 0.2s;
+    }
+    .feature-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.07); }
+    .feature-icon {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 18px;
+    }
+    .feature-card h3 { font-weight: 700; font-size: 1.05rem; margin-bottom: 8px; color: var(--dark); }
+    .feature-card p { font-size: 0.88rem; color: var(--gray); line-height: 1.6; }
+
+    /* TESTIMONIALS */
+    .testimonials-section { background: var(--dark); }
+    .testimonials-section .section-title { color: white; }
+    .testimonials-section .section-label { color: var(--teal-light); }
+    .testimonials-section .section-sub { color: #9CA3AF; }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .testimonial-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 28px;
+    }
+    .testimonial-text {
+      font-size: 0.95rem;
+      color: #E5E7EB;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .testimonial-text::before { content: '"'; color: #C98CA4; font-size: 1.5rem; font-family: Georgia, serif; }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .author-avatar {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      font-weight: 800;
+      font-family: 'Nunito', sans-serif;
+      flex-shrink: 0;
+    }
+    .author-name { font-weight: 700; font-size: 0.9rem; color: white; }
+    .author-role { font-size: 0.78rem; color: #9CA3AF; }
+    .stars { color: var(--yellow); font-size: 0.85rem; margin-bottom: 12px; }
+
+    /* CTA SECTION */
+    .cta-section {
+      background: linear-gradient(135deg, #B5748A 0%, #9B7BAF 50%, #7B6FA0 100%);
+      text-align: center;
+      padding: 90px 5%;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      pointer-events: none;
+    }
+    .cta-section h2 {
+      font-family: 'Nunito', sans-serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 900;
+      color: white;
+      margin-bottom: 16px;
+    }
+    .cta-section p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.85);
+      max-width: 500px;
+      margin: 0 auto 36px;
+    }
+    .cta-section .btn-white {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: white;
+      color: var(--orange);
+      padding: 16px 38px;
+      border-radius: 50px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.15);
+    }
+    .cta-section .btn-white { color: #8B3A6A; }
+    .cta-section .btn-white:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(0,0,0,0.2); }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark);
+      color: #9CA3AF;
+      text-align: center;
+      padding: 36px 5%;
+      font-size: 0.88rem;
+    }
+    footer .footer-logo {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: 1.3rem;
+      color: white;
+      margin-bottom: 12px;
+    }
+    footer .footer-logo span { color: var(--orange); }
+    footer p { margin-top: 6px; }
+    footer a { color: var(--teal-light); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 4%; }
+      .hero, section { padding-left: 4%; padding-right: 4%; }
+      .hero-stats { gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">Pro<span>Mentors</span></a>
+  <a href="#get-app" class="cta-btn">Get the App →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">🚀 Your Growth, Guided by Experts</div>
+  <h1>Find a Mentor for <span class="highlight">Any Goal</span> in <span class="highlight-teal">Life or Career</span></h1>
+  <p>Connect 1-on-1 with verified mentors across IIT prep, UPSC, software engineering, healthcare, law, venture capital, and more — real guidance, real results.</p>
+  <div class="hero-buttons">
+    <a href="#get-app" class="btn-primary">
+      <span>🎯</span> Get Started Free
+    </a>
+    <a href="#how-it-works" class="btn-secondary">
+      <span>▶</span> How it works
+    </a>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works">
+  <div class="section-header">
+    <div class="section-label">Simple Process</div>
+    <div class="section-title">Start in Minutes</div>
+    <p class="section-sub">No complicated setup. Just pick a mentor and start growing.</p>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-number">01</div>
+      <h3>Set Your Goal</h3>
+      <p>Tell us what you want to achieve — crack an exam, switch careers, grow your startup, or work through a life challenge.</p>
+    </div>
+    <div class="step">
+      <div class="step-number">02</div>
+      <h3>Browse Mentors</h3>
+      <p>Filter by domain, price, availability, and reviews. Read mentor stories and find who resonates with your journey.</p>
+    </div>
+    <div class="step">
+      <div class="step-number">03</div>
+      <h3>Book a Session</h3>
+      <p>Schedule a 1-on-1 call at your convenience.</p>
+    </div>
+    <div class="step">
+      <div class="step-number">04</div>
+      <h3>Grow Together</h3>
+      <p>Get personalized guidance, actionable feedback, and consistent support until you hit your goal.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="section-header">
+    <div class="section-label">Real Stories</div>
+    <div class="section-title">What Our Users Say</div>
+    <p class="section-sub">From exam toppers to career changers — real guidance, real results.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">My UPSC mentor helped me build a study plan I actually stuck to. Cleared Prelims on my second attempt after joining Pro Mentors.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background:#F5DDE7; color:#8B3A5A;">P</div>
+        <div>
+          <div class="author-name">Priya S.</div>
+          <div class="author-role">UPSC Aspirant, Delhi</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">Got my dream software job after 3 sessions with a Google engineer. The mock interviews and system design tips were game-changing.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background:#EAE4F5; color:#5B4A8A;">R</div>
+        <div>
+          <div class="author-name">Rahul K.</div>
+          <div class="author-role">Software Engineer, Bangalore</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="get-app">
+  <h2>Ready to Find Your Mentor?</h2>
+  <p>Join thousands of people already growing with Pro Mentors. Your next breakthrough is one conversation away.</p>
+  <a href="#" class="btn-white">
+    <span>📲</span> Download the App
+  </a>
+  <p style="margin-top: 20px; font-size: 0.85rem; color: rgba(255,255,255,0.7);">Available on iOS & Android · Free to get started</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Pro<span>Mentors</span></div>
+  <p>Connecting dreamers with doers, learners with leaders.</p>
+  <p style="margin-top: 16px;">© 2026 Pro Mentors. Made with ❤️ in India.</p>
+</footer>
+
+</body>
+</html>
